@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pers.jackfd.fonticon</groupId>
-    <artifactId>ackfd-fonticon</artifactId>
+    <artifactId>jackfd-fonticon</artifactId>
     <version>0.0.1</version>
 
     <repositories>
