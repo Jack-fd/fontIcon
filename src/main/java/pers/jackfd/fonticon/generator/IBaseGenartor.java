@@ -1,6 +1,6 @@
 package pers.jackfd.fonticon.generator;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Created by MQ on 2016/4/9.

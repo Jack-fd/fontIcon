@@ -1,8 +1,6 @@
 package pers.jackfd.fonticon;
 
-import com.google.common.base.Preconditions;
 import com.google.common.math.DoubleMath;
-import org.apache.commons.lang3.StringUtils;
 import pers.jackfd.fonticon.generator.IBaseGenartor;
 import pers.jackfd.fonticon.generator.impl.DefaultGenerator;
 
@@ -25,27 +23,19 @@ public class Fonticon {
         this.genartor = genartor;
     }
 
-    private BufferedImage create(String text, int size) {
-        Preconditions.checkArgument(size > 0 && StringUtils.isNotBlank(text));
-
+    public BufferedImage create(String text, int size) {
         int ratio = DoubleMath.roundToInt(size / 5.0, RoundingMode.HALF_UP);
-
         BufferedImage identicon = new BufferedImage(ratio * 5, ratio * 5, BufferedImage.TYPE_INT_ARGB);
         Graphics graphics = identicon.getGraphics();
-
         graphics.setColor(genartor.getBackgroundColor()); // 背景色
         graphics.fillRect(0, 0, identicon.getWidth(), identicon.getHeight());
-
         graphics.setColor(genartor.getForegroundColor());
-
-        Font font = new Font("楷体", Font.BOLD, 180);
+        Font font = new Font("楷体", Font.BOLD, size / text.length());
         graphics.setFont(font);
-        char c = text.toCharArray()[0];
-        int x = 5;
-        if (c < 127) {
-            x = 50;
-        }
-        graphics.drawString(text, x, 165);
+        int x = -5;
+        int y = size / text.length();
+        graphics.drawString(text, x, y - 30);
+
         return identicon;
     }
 }
